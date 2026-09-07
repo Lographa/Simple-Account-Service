@@ -1,0 +1,22 @@
+package raphael.account_service.exception;
+
+import java.time.LocalDateTime;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<Map<String, Object>> handleInsufficientBalance(InsufficientBalanceException ex) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body(Map.of(
+                "timestamp", LocalDateTime.now().toString(),
+                "status", HttpStatus.UNPROCESSABLE_CONTENT.value(),
+                "error", "Saldo insuficiente",
+                "message", ex.getMessage()));
+    }
+}
