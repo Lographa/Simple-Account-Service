@@ -1,4 +1,6 @@
 HELP.md
+
+# Variáveis de ambiente (credenciais locais — não versionar)
 .env
 target/
 .mvn/wrapper/maven-wrapper.jar
@@ -32,3 +34,14 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### Maven ###
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.mvn/
+*.iml.idea/
+*.class
+.DS_Store
